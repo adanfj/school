@@ -15,7 +15,7 @@ RUN . $NVM_DIR/nvm.sh && nvm alias default 19.6.0
 RUN . $NVM_DIR/nvm.sh && npm i -g bun
 
 CMD . $NVM_DIR/nvm.sh \
-    && [! -d "/app"] && symfony new --webapp app \
+    && ( [ -d "/app" ] || symfony new --webapp app )\
     && cd /app \
     && composer require twig && composer require encore \
     && bun i \

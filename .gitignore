@@ -1,0 +1,12 @@
+node_modules
+.ipynb_checkpoints
+tflearn_logs
+vendor
+
+.env*
+.env
+*lock*
+
+/PHP/*/config/secrets/prod/prod.decrypt.private.php
+/PHP/*/public/bundles/
+/PHP/*/var/

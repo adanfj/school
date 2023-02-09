@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Práctica Deseño Responsivo</title>
+
+    <link rel="stylesheet" type="text/css" href="css/estilos.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Righteous"
+      rel="stylesheet"
+    />
+
+     <!-- Para o símbolo para amosar o menú -->
+     <link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+   />
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="verde">
+        <h1>Responsivo</h1>
+        <nav>
+          <div class="icon"><i class="fa fa-bars"></i></div>
+          <div class="menu_item">INICIO</div>
+          <div class="menu_item">NÓS</div>
+          <div class="menu_item">CONTACTO</div>
+        </nav>
+      </header>
+      <main>
+        <section class="main_text">
+          <div>
+            <h3>PROXECTO PRÁCTICO</h3>
+            <h1 class="verde">DESEÑO RESPONSIVO</h1>
+          </div>
+          <div>
+            <p>
+              Páxina desenvolvida por @alumno/a para DIW - DAW 2022/23.
+            </p>
+            <p>
+              Establece dous breakpoints, a 576px y a 992px, nos que se
+              produce un cambio no layout da páxina. 
+            </p>
+            <p>O proceso de
+              desenvolvemeento foi levado a cabo comezando dende o deseño para
+              pantallas pequenas
+            </p>
+          </div>
+        </section>
+        <section class="images">
+          <img src="img/img1.jpg" /> <img src="img/img2.jpg" />
+          <img src="img/img3.jpg" /> <img src="img/img4.jpg" />
+          <img src="img/img5.jpg" /> <img src="img/img6.jpg" />
+          <img src="img/img7.jpg" /> <img class="hidden" src="img/img8.jpg" />
+          <img src="img/img9.jpg" />
+        </section>
+      </main>
+      <section class="novidades">
+        <h2 class="verde">NOVIDADES</h2>
+        <article>
+          <h4 >10 de xaneiro</h4>
+          <h3 class="verde">Novidade 1</h3>
+          <p>
+            Accusantium consectetur, numquam ratione sed ut ipsa earum
+            consequatur sunt quae officiis facere tempora nobis pariatur
+            quibusdam non, cum harum. Expedita, doloribus!
+          </p>
+        </article>
+        <article>
+          <h4>11 de xaneiro</h4>
+          <h3 class="verde">Novidade 2</h3>
+          <p>
+            Accusantium consectetur, numquam ratione sed ut ipsa earum
+            consequatur sunt quae officiis facere tempora nobis pariatur
+            quibusdam non, cum harum. Expedita, doloribus!
+          </p>
+        </article>
+        <article>
+          <h4>12 de xaneiro</h4>
+          <h3 class="verde">Novidade 3</h3>
+          <p>
+            Accusantium consectetur, numquam ratione sed ut ipsa earum
+            consequatur sunt quae officiis facere tempora nobis pariatur
+            quibusdam non, cum harum. Expedita, doloribus!
+          </p>
+        </article>
+      </section>
+    </div>
+    <script>
+        $(function() {
+            //Captura do evento para amosar ou ocultar
+            $(".icon").click(function() {
+            $(".menu_item").toggle();
+            });
+            $(window).resize(function() {
+            var anchura = $(this).width();
+            if (anchura > 576) {
+                $(".menu_item").show();
+            }
+            });
+        });
+    </script>
+  </body>
+</html>

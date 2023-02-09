@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script defer>
+    const timeout = (ms)=>new Promise(resolve=>{
+        console.log(ms)
+        return setTimeout(resolve,ms)
+    })
+
+    const f1p = (value)=>{
+        return timeout(3000).then(()=>value)
+    }
+
+    const f1 = async(value)=>{
+        await timeout(3000)
+        const res = await fetch()
+        const json = await res.json()
+        return json;
+    }
+
+    const f2 = async(value)=>{
+        if(typeof value!="number")throw new Error("erro")
+        if(!value%2)return "impar"
+        return "par"
+    }
+    const f3 = async(value)=>{
+     try{
+        let v = await f1();
+        let v1 = await f2();
+        let array = await Promise.all([f1(),f2()])
+        return 0;
+     }  catch(error){
+        return -1;
+     } 
+    }
+    f1p(80).then(console.log)
+</script>

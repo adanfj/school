@@ -1,0 +1,36 @@
+version: '3.9'
+services:
+  web:
+    build: 
+      context: apache
+      dockerfile: Dockerfile
+      target: web
+    ports:
+     - 80:80
+     - 443:443
+    volumes:
+      -  ./apache/all.conf:/etc/apache2/sites-available/all.conf
+      - ./wordpress:/var/html
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8000:80
+    environment:
+      - PMA_ARBITRARY=1
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123.
+      MYSQL_DATABASE: presta
+      MYSQL_USER: prestauser
+      MYSQL_PASSWORD: prestapw
+    ports:
+      - 3306:3306
+    volumes:
+      - basedatos:/var/lib/mysql
+  fauna:
+    image: fauna/faunadb
+    
+volumes:
+  basedatos:

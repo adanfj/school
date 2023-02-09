@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  app-qwik-bootstrap:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: qwik-bootstrap
+    ports:
+      - 80:5173
+      - 443:443
+    volumes:
+      - ./qwik-2:/app

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{park.nombre}} ({{park.provincia}}){% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="card text-center w-50">
+    <img class="img-card-top" src="/imaxes/{{park.fichero}}" alt="{{park.nombre}}">
+    <h1>{{park.nombre}} ({{park.provincia}})</h1>
+    <h3>{{park.ecosistema}}</h3>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{
+  "clients": [
+    {
+      "phone": "909090",
+      "address": "Casa falsa de Darío",
+      "commonOrder": "pan",
+      "id": 1
+    }
+  ],
+  "orders": [
+    {
+      "clientPhone": "909090",
+      "description": "Podrido",
+      "id": 1
+    },
+    {
+      "clientPhone": {},
+      "description": {},
+      "id": 2
+    }
+  ]
+}

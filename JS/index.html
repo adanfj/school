@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script defer>
+    const url = "https://raw.githubusercontent.com/mdn/learning-area/main/javascript/oojs/tasks/json/sample.json"
+    const req = new XMLHttpRequest()
+    req.addEventListener("load",()=>{
+        const data = JSON.parse(req.responseText)
+        const cats = data.map(c=>c.name)
+        const kittens = [].concat(...data.map(c=>[...c.kittens]))
+        const males = kittens.filter(k=>k.gender=="m")
+        const females = kittens.filter(k=>k.gender=="f")
+        document.body.innerHTML=`
+            ${cats.slice(0,cats.length-1).join(", ")} e ${cats.reverse()[0]}.
+            <p>${males.length} machos</p>
+            <p>${females.length} femias</p>
+            ${males.map(k=>`<p>${k.gender}</p>`)}
+        `;
+    })
+    const foo = async()=>{
+        try{
+            await foo2()
+        }catch(err){
+
+        }
+    }
+    req.open("GET", url);
+    req.send();
+</script>

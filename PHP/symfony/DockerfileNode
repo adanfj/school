@@ -1,0 +1,6 @@
+FROM node AS web
+WORKDIR /app
+RUN npm i -g bun
+RUN bun i @symfony/webpack-encore
+
+CMD npm run watch

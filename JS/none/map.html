@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GO%sveltekit.head%SpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+
+    <title>Document</title>
+    <style>
+        #map {
+            height: 900px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div id="weather"></div>
+</body>
+
+</html>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+<script>
+    let markers = JSON.parse(window.localStorage.getItem("markers")??"[]")
+    const map = L.map("map").setView([42.87876, -8.547238], 15);
+    let popup = L.popup();
+    const addMarker = (latLng)=> new L.Marker(latLng)
+    .bindPopup(()=>{
+        const el = document.createElement("input")
+        el.oninput = (e)=>{
+            
+        }
+    }).openPopup()
+    .addTo(map);
+    markers.forEach(m=>{
+        addMarker(L.latLng(m.lat,m.lng))
+    })
+    
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: `&copy; <a
+        href="http://www.openstreetmap.org/copyright" > OpenStreetMap</a> `
+    }).addTo(map);
+
+    map.on("click", async (e) => {
+        console.log(e.latlng);
+        addMarker(L.latLng(e.latlng.lat,e.latlng.lng))
+        markers = [...markers,{lat:e.latlng.lat,lng:e.latlng.lng}]
+        window.localStorage.setItem("markers",JSON.stringify(markers))
+        const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${e.latlng.lat.toFixed(2)}&longitude=${e.latlng.lng.toFixed(2)}&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`)
+        console.log(await response.json());
+    })
+</script>

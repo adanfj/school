@@ -1,0 +1,27 @@
+{
+    "intents": [
+        {
+            "tag": "proportional_representation",
+            "patterns": [
+                "What is proportional representation?",
+                "Is proportional representation actual representation?",
+                "With proportional representation people from different ideologies have a chance to be represented"
+            ],
+            "responses":[
+                "Proportional representation is defined as a representation system that allows the votes to a group, generally a party, to go to people who were not in a list. However it's incorrectly called representation because the wrongly called representatives are chosen by people from the party.",
+                "Proportional representation is actually the opposite of representation"
+            ],
+            "context":""
+        },
+        {
+            "tag": "uninominal_representation",
+            "patterns": [
+                "What is uninominal representation?"
+            ],
+            "responses":[
+                "Uninominal representation is the ability, at a district level, of representing people who directly choose the representative, therefore his interests are directly linked to the people."
+            ],
+            "context":""
+        }
+    ]
+}

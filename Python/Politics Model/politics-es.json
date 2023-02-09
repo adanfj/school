@@ -1,0 +1,53 @@
+{
+    "intents": [
+        {
+            "tag": "proportional_representation_1",
+            "patterns": [
+                "Qué es la representación proporcional?"
+            ],
+            "responses":[
+                "La representación proporcional se define como un sistema de voto que permite que los votos a un grupo. generalmente un partido, vayan a gente que no se puso en una lista",
+                "La representación proporcional es lo opuesto de la representación, dado que un grupo elije a los mal llamados representantes, quienes escucharán a quien les puso en su puesto en vez de a la gente"
+            ],
+            "context":"leadership"
+        },
+        {
+            "tag":"leadership",
+            "patterns":[
+                "A quién representa el líder?"
+            ],
+            "responses":[
+                "A la persona que le puso en su puesto"
+            ],
+            "context":"ideology"
+        },
+        {
+            "tag":"proportional_representation_2",
+            "patterns":[
+                "Es la representación proporcional realmente representación?"
+            ],
+            "responses":[
+                "No"
+            ]
+        },
+        {
+            "tag":"proportional_representation_3",
+            "patterns":[
+                "Con la representación proporcional gente de distintas ideologías tienen una oportunidad de ser representadas"
+            ],
+            "responses":[
+                ""
+            ]
+        },
+        {
+            "tag": "uninominal_representation",
+            "patterns": [
+                "Qué es la representación uninominal?"
+            ],
+            "responses":[
+                "La representación uninominal es el método de elección a nivel de distrito de gente que lleva los intereses de toda la gente a los órganos ejecutivos"
+            ],
+            "context":""
+        }
+    ]
+}

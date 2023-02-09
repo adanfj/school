@@ -1,0 +1,90 @@
+html{
+    font-family: Righteous;
+    font-size: clamp(13px,2vmin,18px);
+}
+
+body{
+    padding: 20px;
+}
+
+h1,.verde{
+    color: green;
+}
+
+.main_text{
+    color:white;
+    background-color: gray;
+    padding:10px;
+}
+*{
+    box-sizing: border-box;
+}
+
+img{
+    flex-grow: 1;
+    width: 25%;
+}
+.images{
+    display:flex;
+    flex-wrap: wrap;
+}
+nav{
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav.menu_item{
+    display: none;
+}
+
+.hidden{
+    display: none;
+}
+
+@media screen and (min-width:576px) {
+    .images{
+        flex-grow: 1;
+        width: 50%;
+    }
+    .main_text{
+        width: 50%;
+    }
+    img{
+        width: 50%;
+    }
+    main{
+        display: flex;
+    }
+    nav{
+        flex-direction: row;
+        gap: 10px;
+    }
+    nav .icon{
+        display: none;
+    }
+    .novidades{
+        display:flex;
+        gap: 10px;
+    }
+    .novidades *{
+        flex-basis: 25%;
+        flex-grow: 1;
+    }
+}
+
+@media screen and (min-width:992px) {
+    main{
+        flex-direction: row-reverse;
+    }
+    img{
+        width: 33%;
+    }
+    .hidden{
+        display: inherit;
+    }
+}

@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  nginx:
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./app/dist:/var/www/html
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./cert:/etc/letsencrypt/epclass.adanfj.dedyn.io
+      - ./app/public:/app/webroot
+    command: certonly --reinstall --webroot --webroot-path=/app/webroot --agree-tos --no-eff-email --email ajffj4@gmail.com -d epclass.adanfj.dedyn.io 

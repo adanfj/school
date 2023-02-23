@@ -9,7 +9,10 @@ services:
       - MARIADB_USER=bn_myapp
       - MARIADB_DATABASE=bitnami_myapp
   myapp:
-    image: docker.io/bitnami/symfony
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: deploy-php
     ports:
       - '8000:8000'
     environment:
@@ -20,8 +23,7 @@ services:
       - SYMFONY_DATABASE_USER=bn_myapp
       - SYMFONY_DATABASE_NAME=bitnami_myapp
     volumes:
-      - './app:/app'
+      - ./app:/app
     depends_on:
       - mariadb
-    command: composer require twig && composer require encore && npm i -g bun && bun update --canary && bun i
 

@@ -14,7 +14,7 @@ services:
 
   cert:
     image: certbot/certbot
-    command: certonly --webroot -v -w /app/public -d *.adanfj.dedyn.io -m a21adanff@iessanclemente.net --manual --preferred-challenges dns --agree-tos --force-renewal -dns-google-credentials
+    command: certonly --webroot -v -w /app/public -d *.adanfj.dedyn.io -m a21adanff@iessanclemente.net --manual --preferred-challenges dns --agree-tos --force-renewal 
     volumes:
       ./app:/app
       ./cert:/etc/letsencrypt/live/adanfj.dedyn.io

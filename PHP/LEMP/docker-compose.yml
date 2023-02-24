@@ -1,0 +1,70 @@
+version: '3.9'
+
+services:
+
+  db:
+    image: mariadb
+    environment:
+      ALLOW_EMPTY_PASSWORD: yes
+      MARIADB_USER: bn_myapp
+      MARIADB_DATABASE: bitnami_myapp
+      MARIADB_PASSWORD: abc123.
+    volumes:
+      db:/var/lib/mysql
+
+  cert:
+    image: certbot/certbot
+    command: certonly --webroot -v -w /app/public -d *.adanfj.dedyn.io -m a21adanff@iessanclemente.net --manual --preferred-challenges dns --agree-tos --force-renewal -dns-google-credentials
+    volumes:
+      ./app:/app
+      ./cert:/etc/letsencrypt/live/adanfj.dedyn.io
+    depends_on:
+      - web
+
+  server:
+    image: nginx
+    volumes:
+      ./app:/app/symfony
+      ./lamp:/app/lamp
+      ./nginx/default.conf:/etc/nginx/default.conf
+    depends_on:
+      - web
+
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: deploy-symfony
+    ports:
+      - 8000:8000
+    environment:
+      ALLOW_EMPTY_PASSWORD: yes
+      SYMFONY_DATABASE_HOST: db
+      SYMFONY_DATABASE_PORT_NUMBER: 3306
+      SYMFONY_DATABASE_USER: bn_myapp
+      SYMFONY_DATABASE_NAME: bitnami_myapp
+      SYMFONY_DATABASE_PASSWORD: abc123.
+    volumes:
+      - ./app:/app
+    depends_on:
+      - db
+
+  weblamp:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: deploy-php
+    ports:
+      - 8080:8080
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: bn_myapp
+      WORDPRESS_DB_PASSWORD: abc123.
+      WORDPRESS_DB_NAME: bitnami_myapp
+    volumes:
+      - ./lamp:/app
+    depends_on:
+      - web
+
+volumes:
+  db:

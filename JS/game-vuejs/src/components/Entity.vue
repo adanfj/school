@@ -7,7 +7,7 @@ export default {
 <template>
     <h2>{{ name }}{{ victory?" Won!":":" }}</h2>
     <div class="progress mb-4">
-        <div class="progress-bar bg-success" role="progressbar" :aria-valuenow="life" aria-valuemin="0" aria-valuemax="100"
+        <div :class="`progress-bar bg-${life>14?life>30?'success':'warning':'danger'}`" role="progressbar" :aria-valuenow="life" aria-valuemin="0" aria-valuemax="100"
         :style="{
             width: `${Math.max(life,0)}%`
         }"></div>
